@@ -14,4 +14,9 @@ class ThreeFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_three, container, false)
     }
+
+    override fun onStart() {
+        super.onStart()
+
+    }
 }

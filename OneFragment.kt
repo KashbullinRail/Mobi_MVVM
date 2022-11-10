@@ -15,4 +15,12 @@ class OneFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_one, container, false)
     }
+
+    override fun onStart() {
+        super.onStart()
+
+
+        (activity as MainActivity).navController.navigate(R.id.action_oneFragment_to_twoFragment)
+    }
+
 }
