@@ -2,33 +2,31 @@ package com.example.mobi_mvvm
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.mobi_mvvm.databinding.FragmentOneBinding
 
 
-class OneFragment : Fragment() {
-    private val btnOne:Button by lazy { requireActivity().findViewById(R.id.btn_next_two) }
+class OneFragment : Fragment(R.layout.fragment_one) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_one, container, false)
-    }
+    private val binding by viewBinding(FragmentOneBinding::bind)
 
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        btnOne.setOnClickListener {
+        binding.btnNextTwo.setOnClickListener {
             var bundle = Bundle()
             bundle.putString("KEY", "NavFragmentTwo")
             (activity as MainActivity)
                 .navController
                 .navigate(R.id.action_oneFragment_to_twoFragment, bundle)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+
 
     }
 
